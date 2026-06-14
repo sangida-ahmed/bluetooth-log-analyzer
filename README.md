@@ -54,6 +54,20 @@ RECOMMENDATIONS:
 ====================================
 Report saved to: bt_report.txt
 ```
+## Web App
+This project includes a Flask web application where you can 
+upload any Bluetooth log file and view the full analysis in 
+your browser.
+
+**To run locally:**
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install flask
+python3 app.py
+```
+Then open http://127.0.0.1:5000
+
 ## Skills used
 Python • File I/O • String parsing • Dictionaries • 
 List comprehensions • Data analysis • Report generation
