@@ -23,6 +23,7 @@ and wireless devices before they ship to customers.
 ```
 ====================================
    BLUETOOTH LOG ANALYZER REPORT
+   Generated: 2026-06-14 10:38:01
 ====================================
 Log File:        bluetooth_log.txt
 Total Events:    20
@@ -30,19 +31,21 @@ Errors Found:    4
 Devices Tested:  3
 
 CONNECTION SUMMARY:
-Device_A            6 connected  1 errors
-Device_B            5 connected  2 errors
-Device_C            5 connected  1 errors
+Device_A            6 connected  1 errors  (14.3% error rate)
+Device_B            5 connected  2 errors  (28.6% error rate)  ⚠️  HIGH ERROR RATE
+Device_C            5 connected  1 errors  (16.7% error rate)
 
 ERROR DETAILS:
 [10:03:21] Device_A ERROR: Pairing timeout
 [10:07:45] Device_B ERROR: Connection dropped
 [10:12:33] Device_B ERROR: Authentication failed
 [10:18:02] Device_C ERROR: Signal too weak
+
+RECOMMENDATIONS:
+⚠️  Device_B requires immediate attention — error rate exceeds 20%
 ====================================
 Report saved to: bt_report.txt
 ```
-
 ## Skills used
 Python • File I/O • String parsing • Dictionaries • 
 List comprehensions • Data analysis • Report generation
