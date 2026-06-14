@@ -1,0 +1,19 @@
+====================================
+   BLUETOOTH LOG ANALYZER REPORT
+====================================
+Log File:        bluetooth_log.txt
+Total Events:    20
+Errors Found:    4
+Devices Tested:  3
+
+CONNECTION SUMMARY:
+Device_A            6 connected  1 errors
+Device_B            5 connected  2 errors
+Device_C            5 connected  1 errors
+
+ERROR DETAILS:
+[10:03:21] Device_A ERROR: Pairing timeout
+[10:07:45] Device_B ERROR: Connection dropped
+[10:12:33] Device_B ERROR: Authentication failed
+[10:18:02] Device_C ERROR: Signal too weak
+====================================
