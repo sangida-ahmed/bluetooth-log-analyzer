@@ -1,5 +1,5 @@
 import sys
-
+from datetime import datetime
 filename = sys.argv[1]
 
 # Open and read the log file
@@ -44,8 +44,10 @@ for event in events:
         device_summary[device]["errors"] += 1
 
 # Print the report
+now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 print("====================================")
 print("   BLUETOOTH LOG ANALYZER REPORT")
+print(f"   Generated: {now}")
 print("====================================")
 print(f"Log File:        {filename}")
 print(f"Total Events:    {total_events}")
@@ -62,6 +64,14 @@ print()
 print("ERROR DETAILS:")
 for error in errors:
     print(f"[{error['timestamp']}] {error['device']} ERROR: {error['detail']}")
+print()
+print("RECOMMENDATIONS:")
+high_error_devices = [d for d, c in device_summary.items() if (c['errors'] / (c['connected'] + c['errors'])) * 100 > 20]
+if high_error_devices:
+    for device in high_error_devices:
+        print(f"⚠️  {device} requires immediate attention — error rate exceeds 20%")
+else:
+    print("✅ All devices within acceptable error rate thresholds")
 print("====================================")
 
 # Save report to file
