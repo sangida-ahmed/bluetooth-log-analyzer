@@ -1,5 +1,9 @@
+import sys
+
+filename = sys.argv[1]
+
 # Open and read the log file
-with open("bluetooth_log.txt", "r") as file:
+with open(filename, "r") as file:
     lines = file.readlines()
 
 # Parse each line
@@ -43,14 +47,17 @@ for event in events:
 print("====================================")
 print("   BLUETOOTH LOG ANALYZER REPORT")
 print("====================================")
-print(f"Log File:        bluetooth_log.txt")
+print(f"Log File:        {filename}")
 print(f"Total Events:    {total_events}")
 print(f"Errors Found:    {total_errors}")
 print(f"Devices Tested:  {total_devices}")
 print()
 print("CONNECTION SUMMARY:")
 for device, counts in device_summary.items():
-    print(f"{device:<20}{counts['connected']} connected  {counts['errors']} errors")
+    total = counts['connected'] + counts['errors']
+    error_rate = (counts['errors'] / total) * 100
+    flag = "  ⚠️  HIGH ERROR RATE" if error_rate > 20 else ""
+    print(f"{device:<20}{counts['connected']} connected  {counts['errors']} errors  ({error_rate:.1f}% error rate){flag}")
 print()
 print("ERROR DETAILS:")
 for error in errors:
